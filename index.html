@@ -11,15 +11,41 @@
 </head>
 <body>
   
+  <style>
+    .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid black;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+  </style>
 
 
   <div id="app">
     <h1>Indirizzi Email</h1>
-    <ul>
+
+    <ul v-if="isLoaded">
       <li v-for="email in emailAddresses">
         {{email}}
       </li>
     </ul>
+
+    <div v-else>
+      <span class="loader"></span>
+    </div>
   </div>
 </body>
 </html>

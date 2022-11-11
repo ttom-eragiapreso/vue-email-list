@@ -18,7 +18,8 @@ createApp({
 
     return {
       apiUrl: 'https://flynn.boolean.careers/exercises/api/random/mail',
-      emailAddresses: []
+      emailAddresses: [],
+      isLoaded: false
     }
   },
 
@@ -28,6 +29,9 @@ createApp({
       axios.get(this.apiUrl)
       .then( risultato => {
         this.emailAddresses.push(risultato.data.response) 
+        if(this.emailAddresses.length === 10){
+          this.isLoaded = true
+        }
       })
       .catch( error => console.log(error))
     }
